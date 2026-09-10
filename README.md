@@ -1,13 +1,13 @@
-# Orvex A Key-Value Cloud Databases Built On SQLite
+# Orvex Cloud Databases Built On SQLite
 
 ```bash
 npm install orvexdb
 ```
 
 ```js
-import { Orvex } from "orvexdb";
+import { OrvexClient } from "orvexdb";
 
-const db = new Orvex({ 
+const db = new OrvexClient({ 
     dbUrl: "",
     token: "sk_live_..."
 });
