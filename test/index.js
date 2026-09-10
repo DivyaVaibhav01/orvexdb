@@ -3,7 +3,7 @@
 import { OrvexClient } from "orvexdb";
 
 const client = new OrvexClient({
-    dbUrl: "http://api.orvex.tech/v1",
+    dbUrl: "https://api.orvex.tech/v1",
     token: "sk_live_31...."
 });
 
