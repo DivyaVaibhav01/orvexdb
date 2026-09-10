@@ -1,4 +1,4 @@
-# OrvexC A Cloud Databases Built On SQLite
+# Orvex A Cloud Databases Built On SQLite
 
 ```bash
 npm install orvexdb
