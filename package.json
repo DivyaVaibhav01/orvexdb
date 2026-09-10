@@ -1,0 +1,38 @@
+{
+  "name": "orvexdb",
+  "version": "1.0.0",
+  "description": "Orvex key-value database based on SQLite.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/types.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./src/types.d.ts"
+    }
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "orvex",
+    "orvexdb",
+    "key-value",
+    "kv",
+    "database",
+    "sqlite",
+    "sdk",
+    "http"
+  ],
+  "author": "Vaibhav",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DivyaVaibhav01/orvexdb.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
