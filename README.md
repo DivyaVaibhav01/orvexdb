@@ -24,7 +24,7 @@ await db.get("greeting"); // "hello"
 npm install orvexdb
 ```
 
-Works in Node 18+, Bun, Deno, and browsers.
+Works in Node 18+, Bun (python soon).
 
 ---
 
