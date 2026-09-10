@@ -105,18 +105,18 @@ function assertRange(start, stop) {
 }
 
 // ---------- client ----------
-export class Orvex {
-  constructor({ baseUrl, token, timeout = DEFAULT_TIMEOUT, retries = DEFAULT_RETRIES, fetch: customFetch, debug = false } = {}) {
+export class OrvexClient {
+  constructor({ dbUrl, token, timeout = DEFAULT_TIMEOUT, retries = DEFAULT_RETRIES, fetch: customFetch, debug = false } = {}) {
     // token is required — everything is authenticated
     if (!token || typeof token !== "string") {
       throw new OrvexError("token required", "MISSING_TOKEN", 0, null);
     }
-    // baseUrl is required — the SDK appends /v1 to it internally
-    if (!baseUrl || typeof baseUrl !== "string") {
-      throw new OrvexError("baseUrl required", "MISSING_BASE_URL", 0, null);
+    // dbUrl is required — the SDK appends /v1 to it internally
+    if (!dbUrl || typeof dbUrl !== "string") {
+      throw new OrvexError("dbUrl required", "MISSING_DB_URL", 0, null);
     }
     this.token = token;
-    this.baseUrl = baseUrl.replace(/\/$/, "");                   // strip trailing slash for consistency
+    this.dbUrl = dbUrl.replace(/\/$/, "");;                   // strip trailing slash for consistency
     this.timeout = timeout;
     this.retries = retries;
     this._fetch = customFetch || globalThis.fetch;               // allow injecting a custom fetch
