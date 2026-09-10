@@ -8,7 +8,7 @@ npm install orvexdb
 import { OrvexClient } from "orvexdb";
 
 const db = new OrvexClient({ 
-    dbUrl: "",
+    dbUrl: "https://api.orvex.tech/v1",
     token: "sk_live_..."
 });
 
@@ -31,11 +31,11 @@ Works in Node 18+, Bun (python soon).
 ## Quick start
 
 ```js
-import { Orvex } from "orvexdb";
+import { OrvexClient } from "orvexdb";
 
-const db = new Orvex({
-  token: "sk_live_...",
-  // baseUrl defaults to the hosted API
+const db = new OrvexClient({ 
+    dbUrl: "https://api.orvex.tech/v1",
+    token: "sk_live_..."
 });
 
 // Strings
@@ -207,8 +207,12 @@ All commands return a promise. All throw `OrvexError` on failure.
 Every error is an `OrvexError`:
 
 ```js
-import { Orvex, OrvexError } from "orvexdb";
+import { OrvexClient, OrvexError } from "orvexdb";
 
+const db = new OrvexClient({ 
+    dbUrl: "https://api.orvex.tech/v1",
+    token: "sk_live_..."
+});
 try {
   await db.get("x");
 } catch (err) {
@@ -251,7 +255,7 @@ On `QUOTA_*` and `RATE_LIMITED` errors, `err.retryAfter` holds seconds until res
 ```js
 const db = new Orvex({
   token: "sk_live_...",                 // required
-  baseUrl: "https://api.orvexdb.dev",   // optional
+  dbUrl: "https://api.orvexdb.dev",   // required
   timeout: 30000,                       // optional, ms
   retries: 2,                           // optional, retry on 429/5xx
   fetch: customFetch                    // optional, custom fetch
@@ -265,9 +269,12 @@ const db = new Orvex({
 Orvex ships with full TypeScript types. No `@types/orvexdb` needed.
 
 ```ts
-import { Orvex, OrvexError } from "orvexdb";
+import { OrvexClient, OrvexError } from "orvexdb";
 
-const db = new Orvex({ token: "sk_live_..." });
+const db = new OrvexClient({ 
+    dbUrl: "https://api.orvex.tech/v1",
+    token: "sk_live_..."
+});
 
 interface User { name: string; age: number }
 
@@ -285,7 +292,7 @@ For `tsconfig.json`, use:
 
 ## Quotas
 
-Every account has, per month:
+Every hero account has, per month:
 
 | Metric | Limit |
 |---|---|
@@ -296,16 +303,6 @@ Every account has, per month:
 When you hit a limit, the operation is refused with `QUOTA_*`. Your data is **never deleted**. The quota resets on the 1st of each month, UTC.
 
 `whoami`, `usage`, and `storage` are always free — they don't count toward quotas.
-
----
-
-## Security
-
-- All traffic is HTTPS.
-- Tokens are opaque and never guessable.
-- Each user's data lives in a separate database file — one user physically cannot read another's data.
-- All queries use parameterized statements. No SQL injection.
-- All input is size- and type-checked.
 
 ---
 
